@@ -24,7 +24,7 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
 
-      # SecretにJSON本文をそのまま貼る方式（base64不要）
+      # SecretにJSON本文をそのまま貼る方式（SA_JSON）
       - name: Restore service account JSON
         run: |
           set -eu
