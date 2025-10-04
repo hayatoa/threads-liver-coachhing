@@ -24,14 +24,13 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
 
-      # SecretにJSON本文をそのまま貼る方式（SA_JSON）
       - name: Restore service account JSON
+        env:
+          SA_JSON_BASE64: ${{ secrets.SA_JSON_BASE64 }}
         run: |
           set -eu
           mkdir -p "$HOME/.config/gspread"
-          cat > "${GITHUB_WORKSPACE}/sa.json" <<'JSON'
-${{ secrets.SA_JSON }}
-JSON
+          echo "$SA_JSON_BASE64" | base64 -d > "${GITHUB_WORKSPACE}/sa.json"
           install -m 600 "${GITHUB_WORKSPACE}/sa.json" "$HOME/.config/gspread/service_account.json"
           ls -l "$HOME/.config/gspread"
 
