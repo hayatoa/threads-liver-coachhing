@@ -60,7 +60,6 @@ jobs:
         run: |
           python main_gsheet.py
 
-# 自動停止を防ぐためのダミーコミット
       - name: Keepalive Workflow
         run: |
           git config --global user.name "GitHub Actions"
