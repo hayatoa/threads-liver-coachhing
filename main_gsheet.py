@@ -30,7 +30,7 @@ def find_next_row(ws):
         text = (row.get("text") or "").strip()
         image_url = (row.get("image_url") or "").strip()
         status = (row.get("status") or "").strip().lower()
-        if (text or image_url) and status not in ("posted", "done", "済", "posted✅"):
+        if (text or image_url) and status not in ("posted", "done", "済", "posted✅", "hold", "rejected", "error", "failed"):
             return idx, row
     return None, None
 
